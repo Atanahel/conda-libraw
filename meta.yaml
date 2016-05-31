@@ -1,0 +1,21 @@
+package:
+  name: libraw
+  version: 0.17.2
+
+source:
+  fn: LibRaw-0.17.2.tar.gz
+  url: http://www.libraw.org/data/LibRaw-0.17.2.tar.gz
+  md5: 456626300777209def1ea784910f326a
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - zlib
+  run:
+
+
+about:
+  home: http://www.libraw.org/
+  license: as-is (http://www.libraw.org/docs#copyright)
