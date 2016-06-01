@@ -28,5 +28,5 @@ script:
 
 deploy:
   - provider: script
-    script: anaconda -t $ANACONDA_TOKEN upload $HOME/miniconda/conda-bld/**/libraw-*.tar.bz2
+    script: anaconda -t $ANACONDA_TOKEN upload --force $HOME/miniconda/conda-bld/**/libraw-*.tar.bz2
     
