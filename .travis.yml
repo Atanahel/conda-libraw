@@ -30,7 +30,7 @@ install:
   - conda info -a
   
 script:
-  - conda build --py=$TRAVIS_PYTHON_VERSION .
+  - conda build --py=$ANACONDA_PYTHON_VERSION .
 
 deploy:
   - provider: script
