@@ -5,7 +5,7 @@ python:
   - "3.4"
   - "3.5"
   
-before_install:
+install:
   - sudo apt-get update
   # We do this conditionally because it saves us some downloading if the
   # version is the same.
@@ -22,8 +22,6 @@ before_install:
   - conda install -q conda-build anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
-  
-install:
   - conda build --py=$TRAVIS_PYTHON_VERSION .
   - conda install --use-local libraw
 
