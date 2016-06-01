@@ -1,4 +1,3 @@
-language: python
 env:
   - ANACONDA_PYTHON_VERSION="3.5"
 os:
