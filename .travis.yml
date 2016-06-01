@@ -22,6 +22,8 @@ install:
   - conda install -q conda-build anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
+  
+script:
   - conda build --py=$TRAVIS_PYTHON_VERSION .
   - conda install --use-local libraw
 
