@@ -2,15 +2,23 @@ language: python
 python:
   # This is a c only library so the python version does not matter
   - "3.5"
+os:
+  - linux
+  - osx
   
 install:
-  - sudo apt-get update
-  # We do this conditionally because it saves us some downloading if the
-  # version is the same.
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
+  - if [[ "$TRAVIS_OS_NAME" == "linux ]]; then
+      if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+        wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
+      else
+        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+      fi
     else
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+      if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+        wget https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -O miniconda.sh;
+      else
+        wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+      fi
     fi
   - bash miniconda.sh -b -p $HOME/miniconda
   - rm miniconda.sh
@@ -24,7 +32,6 @@ install:
   
 script:
   - conda build --py=$TRAVIS_PYTHON_VERSION .
-  - conda install --use-local libraw
 
 deploy:
   - provider: script
